@@ -2,6 +2,9 @@ import Card from './components/Card'
 import 'bootstrap/dist/css/bootstrap.css'
 
 function App() {
+
+  const cryptos = ['bitcoin', 'ethereum', 'cardano', 'solana', 'dolar']
+
   return (
     <div className="container-fluid">
       <div className='row justify-content-center'>
@@ -15,7 +18,7 @@ function App() {
       <div className="row mt-3 justify-content-center">
         <div className="col-sm d-flex mx-auto justify-content-center">
           <Card coin='Ethereum' text='ETH segunda crypto con market cap más grande.'/>
-          <Card coin='Dolar' text='Dolar ahorrista, incluye el %65 de impuestos.'/>
+          {/* <Card coin='Dolar' text='Dolar ahorrista, incluye el %65 de impuestos.'/> */}
           {/* <Card coin='Bitcoin' text='Criptomoneda más importante del momento.'/> */}
         </div>
       </div>
