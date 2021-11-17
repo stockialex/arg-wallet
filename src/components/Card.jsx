@@ -6,41 +6,39 @@ import '../styles/Card.css';
 function Card (props) {
 
     const cryptoURL = `https://api.coingecko.com/api/v3/coins/${props.coin.toLowerCase()}`
-    const dollarURL = 'https://criptoya.com/api/dolar'
 
-    const [crypto, setCrypto] = useState("")
-    const [dollar, setDollar] = useState("")
-
+    const [cryptoPrice, setCryptoPrice] = useState("")
 
     useEffect(()=>{
         axios.get(cryptoURL)
         .then((response)=>{
-            setCrypto(response.data.market_data.current_price.usd)
+            setCryptoPrice(response.data.market_data.current_price.usd)
         })
-        .then(axios.get(dollarURL)
-            .then((response)=>{
-                setDollar(response.data.blue)
-            }))
     },[])
+
+    const priceArs = (priceUsd) => {
+        let price = priceUsd * props.dollar
+        return price.toFixed(2)
+    }
 
     return (
         <div className='card text-white bg-dark mb-3 Card'>
             <div className='card-header text-center'>
-                <h2>this is a test</h2>
+                <h2>{props.title}</h2>
             </div>
             <div className='card-body'>
                 <h5 className='card-body my-purchase'>
-                    {`El eth ${crypto}`}
+                    {`${props.token}: $${cryptoPrice}`}
                 </h5>
-                <h4 className='actual-price'>
-                    {`El dolar blue ${dollar}`}
-                </h4>
+                <p className='actual-price'>
+                    {`Dolar blue ARS$ ${props.dollar}`}
+                </p>
                 <h4 className='actual-price'>
                     {/* {props.actualPrice} */}
                 </h4>
-                <h3 className='actual-price currency-to-ars'>
-                    {/* {props.actualPrice} */}
-                </h3>
+                <p className='actual-price currency-to-ars'>
+                    {`1 ${props.token} = ARS $ ${priceArs(cryptoPrice)}`}
+                </p>
                 <p className='card-text'>
                     {/* {props.text} */}
                 </p>

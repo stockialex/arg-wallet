@@ -1,25 +1,25 @@
 import Card from './components/Card'
+import ListItems from './components/ListItems';
 import 'bootstrap/dist/css/bootstrap.css'
+import Input from './components/Input';
 
 function App() {
 
-  const cryptos = ['bitcoin', 'ethereum', 'cardano', 'solana', 'dolar']
+  
 
   return (
     <div className="container-fluid">
       <div className='row justify-content-center'>
-        <h1 className='text-center'>Dollar - Ars</h1>
+        <h1 className='text-center'>Conversor argento</h1>
       </div>
       
       <div className="row mt-4 justify-content-center">
-        <input type="number" style={{width: '18rem'}} />
+        <Input />
       </div>
 
       <div className="row mt-3 justify-content-center">
         <div className="col-sm d-flex mx-auto justify-content-center">
-          <Card coin='Ethereum' text='ETH segunda crypto con market cap más grande.'/>
-          {/* <Card coin='Dolar' text='Dolar ahorrista, incluye el %65 de impuestos.'/> */}
-          {/* <Card coin='Bitcoin' text='Criptomoneda más importante del momento.'/> */}
+          <ListItems />
         </div>
       </div>
     </div>
